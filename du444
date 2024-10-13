@@ -1,3 +1,8 @@
+function FastWait(yield)
+	local clock = os.clock()+yield
+	repeat until os.clock() >= clock
+	return os.clock()-(clock-yield) -- This line can be removed if you don't care about a return value.
+end
 for i=1,11000 do
 FastWait(0.00001)
 local args = {
