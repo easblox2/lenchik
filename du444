@@ -1,0 +1,23 @@
+for i=1,11000 do
+FastWait(0.00001)
+local args = {
+    [1] = {
+        [1] = {
+            [1] = "\226\129\130Z",
+            [2] = "MythicCrate",
+            [3] = {
+                ["Legendary"] = false,
+                ["Basic"] = false,
+                ["Mythic"] = false,
+                ["Epic"] = false,
+                ["Uncommon"] = false,
+                ["Rare"] = false
+            }
+        }
+    }
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("NetworkingContainer"):WaitForChild("DataRemote"):FireServer(unpack(args))
+FastWait(0.00001)
+end
+print("fuck telanthric by @dirolf discord")
