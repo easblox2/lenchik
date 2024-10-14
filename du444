@@ -3,6 +3,35 @@ function FastWait(yield)
 	repeat until os.clock() >= clock
 	return os.clock()-(clock-yield) -- This line can be removed if you don't care about a return value.
 end
+
+for i=1,11000 do
+FastWait(0.00001)
+local args = {
+    [1] = {
+        [1] = {
+            [1] = "\226\129\130\144",
+            [2] = "DrillCrate",
+            [3] = {
+                ["Legendary"] = false,
+                ["Basic"] = false,
+                ["Mythic"] = false,
+                ["Epic"] = false,
+                ["Uncommon"] = false,
+                ["Rare"] = false
+            }
+        }
+    }
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("NetworkingContainer"):WaitForChild("DataRemote"):FireServer(unpack(args))
+FastWait(0.00001)
+end
+function FastWait(yield)
+	local clock = os.clock()+yield
+	repeat until os.clock() >= clock
+	return os.clock()-(clock-yield) -- This line can be removed if you don't care about a return value.
+end
+
 for i=1,11000 do
 FastWait(0.00001)
 local args = {
@@ -25,4 +54,3 @@ local args = {
 game:GetService("ReplicatedStorage"):WaitForChild("NetworkingContainer"):WaitForChild("DataRemote"):FireServer(unpack(args))
 FastWait(0.00001)
 end
-print("fuck telanthric by @dirolf discord")
