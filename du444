@@ -53,6 +53,7 @@ local args = {
 
 game:GetService("ReplicatedStorage"):WaitForChild("NetworkingContainer"):WaitForChild("DataRemote"):FireServer(unpack(args))
 FastWait(0.0000001)
+end
 for i=1,11000 do
 FastWait(0.0000001)
 local args = {
