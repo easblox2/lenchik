@@ -5,7 +5,7 @@ function FastWait(yield)
 end
 
 for i=1,11000 do
-FastWait(0.00001)
+FastWait(0.0000001)
 local args = {
     [1] = {
         [1] = {
@@ -24,7 +24,7 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("NetworkingContainer"):WaitForChild("DataRemote"):FireServer(unpack(args))
-FastWait(0.00001)
+FastWait(0.0000001)
 end
 function FastWait(yield)
 	local clock = os.clock()+yield
@@ -33,7 +33,7 @@ function FastWait(yield)
 end
 
 for i=1,11000 do
-FastWait(0.00001)
+FastWait(0.0000001)
 local args = {
     [1] = {
         [1] = {
@@ -52,5 +52,26 @@ local args = {
 }
 
 game:GetService("ReplicatedStorage"):WaitForChild("NetworkingContainer"):WaitForChild("DataRemote"):FireServer(unpack(args))
-FastWait(0.00001)
+FastWait(0.0000001)
+for i=1,11000 do
+FastWait(0.0000001)
+local args = {
+    [1] = {
+        [1] = {
+            [1] = "\226\129\130Z",
+            [2] = "AdvancedToiletCrate",
+            [3] = {
+                ["Legendary"] = false,
+                ["Basic"] = false,
+                ["Mythic"] = false,
+                ["Epic"] = false,
+                ["Uncommon"] = false,
+                ["Rare"] = false
+            }
+        }
+    }
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("NetworkingContainer"):WaitForChild("DataRemote"):FireServer(unpack(args))
+FastWait(0.0000001)
 end
