@@ -1,0 +1,300 @@
+// точки включения аккаунтов, у меня релоады страниц
+define($mainAccX, 681)
+define($mainAccY, 136)
+define($acc2X, 1285)
+define($acc2Y, 142)
+define($acc3X, 1811)
+define($acc3Y, 71)
+define($acc4X, 159)
+define($acc4Y, 135)
+
+define($crossAcc1X, 1708)
+define($crossAcc1Y, 60)
+define($crossAcc2X, 1688)
+define($crossAcc2Y, 1046)
+define($crossAcc3X, 3439)
+define($crossAcc3Y, 142)
+define($crossAcc4X, 3281)
+define($crossAcc4Y, 1046)
+
+define($mainUserName, "Mervix8388")
+
+// определить сумму пикселей с полным аккаунтом на полных аккаунтах  (функция ниже)
+define($MustCount1, 5298301)
+define($MustCount2, 4686316)
+define($MustCount3, 7686056)
+
+define($synapseX, "C:\Users\Gaming_PC\Desktop\rxb\synapseZ\SynapseLauncher.exe")
+$executeCode = StrReadln("C:\Users\Gaming_PC\Desktop\load.txt", 1)
+$executeCode2 = StrReadln("C:\Users\Gaming_PC\Desktop\load2.txt", 1)
+
+// юзай чтобы определить сумму пикселей при полном кармпане гемов
+SUB(sumFullHelper)
+   getscreen
+   
+   $count1 = PXLXOR (1147, 967, 1169, 982)  // 1324626
+   logwrite("pixels: ", $count1)
+   
+   $count2 = PXLXOR (2893,1033, 2927, 1048) // 4686316
+   logwrite("pixels: ", $count2)
+   
+   $count3 = PXLXOR (1125,1954, 1148, 1968) // 7686056
+   logwrite("pixels: ", $count3)
+end_sub
+
+sub(moveClick, $par1, $par2)
+   move($par1 - 5, $par2 - 5)
+   waitms(100)
+   Lclick($par1, $par2)
+   waitms(100)
+end_sub
+
+SUB(openAcc, $par1, $par2)
+   move($par1, $par2)
+   waitms(100)
+   LCLICK($par1, $par2)
+   waitms(100)
+   LCLICK($par1 - 10, $par2 - 3)
+   waitms(100)
+   wait(10)
+END_SUB
+
+SUB(openAccs)
+   openAcc($acc4X, $acc4Y)
+   lclick(413, 44)
+   wait(12)
+   openAcc($mainAccX, $mainAccY)
+   wait(2)
+   openAcc($acc2X, $acc2Y)
+   wait(1)
+   openAcc($acc3X, $acc3Y)
+end_sub
+
+Sub(pos4, $hwid)
+   wndpos($hwid, 2136, 1029, 1224, 1031)
+end_sub
+
+Sub(pos3, $hwid)
+   wndpos($hwid, 546, 1035, 1224, 1031)
+end_sub
+
+Sub(pos2, $hwid)
+   wndpos($hwid, 2291, 127, 1224, 1031)
+end_sub
+
+Sub(pos1, $hwid)
+   wndpos($hwid, 569, 48, 1224, 1031)
+end_sub
+
+SUB(posAccounts)
+   WNDGETINFO(WNDFIND("ROBLOX", true), $firstRbX, $firstRbY, $firstRbH, $firstRbW)
+   for($i = 0, $i < 4, 1)
+      print(1)
+      wndpos(hget($firstRbX, $firstRbY), 1206, 1072, 1224, 1031)
+   end_cyc
+   Define($countGems, 0)
+   Define($countWithGems, 0)
+   for($j = 0, $j < 1, 1)
+      print(2)
+      getscreen
+      //WNDSTATE(hget(4, 4), 1)
+      wait(1)
+      getscreen
+      
+      
+      
+      pos3(hget(1910, 1962))
+      pos2(hget(1910, 1962))
+      pos1(hget(1910, 1962))
+      pos4(hget(1910, 1962))
+      
+      
+      print(PXL(1909, 1962))
+      print(hget(1910, 1962))
+   end_cyc
+   undefine($countGems)
+   undefine($countWithGems)
+END_SUB
+
+SUB(moveAccToOffice, $tpButX, $tpY)
+   moveClick($tpButX, $tpY)
+   waitms(500)
+   moveClick($tpButX, $tpY + 115)
+   keydown(#A)
+   waitms(700)
+   keyup(#A)
+end_sub
+
+SUB(moveToPostOffice)
+   Lclick(1339, 662)
+   moveAccToOffice(727, 99)
+   wait(1)
+   Lclick(3304, 1007)
+   waitms(150)
+   moveAccToOffice(2455, 178)
+   wait(1)
+   Lclick(1195, 1355)
+   waitms(150)
+   moveAccToOffice(718, 1088)
+END_SUB
+
+sub(getPackage, $packageButtonX, $packageButtonY)
+   moveClick($packageButtonX, $packageButtonY)
+   moveClick($packageButtonX, $packageButtonY)
+   moveClick($packageButtonX, $packageButtonY + 115)
+   wait(5)
+   moveClick($packageButtonX - 100, $packageButtonY)
+end_sub
+
+SUB(getPackageIfNoGems)
+   IF($count1 = $MustCount1)
+   else
+      print(getGems1)
+      getPackage(1287, 321)
+   end_if
+   
+   IF($count3 = $MustCount3)
+   else
+      print(getGems3)
+      getPackage(1263, 1307)
+   end_if
+END_SUB
+
+SUB(closeRb, $crossX, $crossY)
+   move($crossX, $crossY)
+   waitms(100)
+   Lclick($crossX - 3, $crossY - 3)
+   waitms(100)
+   LCLICK($crossX, $crossY)
+   waitms(100)
+   Lclick($crossX - 3, $crossY - 3)
+   waitms(100)
+END_SUB
+
+SUB(closeRbxs)
+   closeRb($crossAcc1X, $crossAcc1Y)
+   wait(1)
+   closeRb($crossAcc2X, $crossAcc2Y)
+   closeRb($crossAcc3X, $crossAcc3Y)
+   closeRb($crossAcc4X, $crossAcc4Y)
+   closeRb(1691, 1053)
+END_SUB
+
+SUB(paste)
+   WAITMS(500)
+   KEYDOWN (#CTRL) // вставляем Ctrl+V
+   WAITMS (50)
+   KEYDOWN (#V)
+   WAITMS (50)
+   KEYUP (#V)
+   KEYUP (#CTRL)
+   WAITMS(500)
+END_SUB
+
+Sub(tradePrepare, $userX, $userY)
+   TOCLIP($mainUserName)
+   LCLICK($userX - 100, $userY)
+   moveClick($userX, $userY)
+   paste()
+   moveClick($userX - 188, $userY + 350)
+   TOCLIP(24000000)
+   paste()
+   moveClick($userX + 69, $userY + 303)
+   
+END_SUB
+
+SUB(tradesPrepare)
+   tradePrepare(1236, 462)
+   tradePrepare(1212, 1443)
+END_SUB
+
+SUB(denyGems)
+   moveClick(2827, 688)
+   moveClick(3038, 402)
+   wait(1)
+   for($var=0, $var < 2)
+      moveClick(3138, 515)
+      wait(1)
+      moveClick(2803, 793)
+      wait(10)
+   end_cyc
+   
+END_SUB
+
+SUB(executeButton)
+   moveClick(2743, 1563)
+   waitms(1100)
+   waitms(100)
+   TOCLIP($executeCode2)
+   print($executeCode2)
+   wait(1)
+   keypress(#DELETE)
+   wait(1)
+   LCLICK(2400, 1468)
+   wait(1)
+   
+END_SUB
+
+SUB(confTrades)
+   moveClick(1084, 671)
+   moveClick(1084, 671)
+   move(157, 259)
+   LCLICK(157, 259)
+   waitms(100)
+   moveClick(1061, 1657)
+   moveClick(1061, 1657)
+END_SUB
+
+SUB(shutdown)
+   EXECUTE("taskkill", "/f /im RobloxPlayerBeta.exe")
+  // EXECUTE("taskkill", "/f /im MultipleRobloxInstances.exe")
+   //wait(3)
+   //lclick(657, 2140)
+
+END_SUB
+
+SUB(leaveAccs)
+   waitms(1150)
+   moveClick(2093, 502)
+   moveClick(2093, 502)
+   
+END_SUB
+
+SUB(dupe)
+   executeButton()
+   wait(10)
+   confTrades()
+   leaveAccs() 
+END_SUB
+
+Sub(main)
+   print(open)
+   openAccs()
+   wait(20)
+   print(pos)
+   posAccounts()
+   wait(1)
+   sumFullHelper()
+   moveToPostOffice()
+   denyGems()
+   //   WAIT(10) // Убрать после того как на каждом акке по 1 посылке
+   getPackageIfNoGems()
+   tradesPrepare()
+   
+   dupe()
+   wait(130)
+   shutdown()
+   wait(19)
+end_sub
+
+
+
+
+for($findTime = 5010, $findTime < 7000, 10)
+   print("Time ", $findTime)
+   main()
+end_CYC
+
+
+print(end)
+wait(1000)
