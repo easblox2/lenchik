@@ -1,44 +1,48 @@
 // точки включения аккаунтов, у меня релоады страниц
-define($mainAccX, 681)
-define($mainAccY, 136)
-define($acc2X, 1285)
-define($acc2Y, 142)
-define($acc3X, 1811)
-define($acc3Y, 71)
-define($acc4X, 159)
-define($acc4Y, 135)
+define($mainAccX, -1917)
+define($mainAccY, 873)
+define($acc2X, -1300)
+define($acc2Y, 877)
+define($acc2X, -1300)
+define($acc2Y, 877)
+define($acc3X, -714)
+define($acc3Y, 866)
+define($acc4X, -2437)
+define($acc4Y, 876)
 
-define($crossAcc1X, 1708)
-define($crossAcc1Y, 60)
-define($crossAcc2X, 1688)
-define($crossAcc2Y, 1046)
-define($crossAcc3X, 3439)
-define($crossAcc3Y, 142)
-define($crossAcc4X, 3281)
-define($crossAcc4Y, 1046)
+define($crossAcc1X, 1785)
+define($crossAcc1Y, 61)
+define($crossAcc2X, 3508)
+define($crossAcc2Y, 142)
+define($crossAcc3X, 1764)
+define($crossAcc3Y, 1051)
+define($crossAcc4X, 3354)
+define($crossAcc4Y, 1042)
+define($crossExceptionX, 2017)
+define($crossExceptionY, 1133)
 
-define($mainUserName, "Mervix8388")
+define($mainUserName, "Blastsp9120")
+//define($mainUserName, "Starf1917")
 
 // определить сумму пикселей с полным аккаунтом на полных аккаунтах  (функция ниже)
-define($MustCount1, 5298301)
+define($MustCount1, 11869724)
 define($MustCount2, 4686316)
-define($MustCount3, 7686056)
+define($MustCount3, 5982516) // 1641736        5982516
 
 define($synapseX, "C:\Users\Gaming_PC\Desktop\rxb\synapseZ\SynapseLauncher.exe")
 $executeCode = StrReadln("C:\Users\Gaming_PC\Desktop\load.txt", 1)
-$executeCode2 = StrReadln("C:\Users\Gaming_PC\Desktop\load2.txt", 1)
 
 // юзай чтобы определить сумму пикселей при полном кармпане гемов
 SUB(sumFullHelper)
    getscreen
    
-   $count1 = PXLXOR (1147, 967, 1169, 982)  // 1324626
+   $count1 = PXLXOR (1182, 959, 1208, 975)  // 1892194
    logwrite("pixels: ", $count1)
    
    $count2 = PXLXOR (2893,1033, 2927, 1048) // 4686316
    logwrite("pixels: ", $count2)
    
-   $count3 = PXLXOR (1125,1954, 1148, 1968) // 7686056
+   $count3 = PXLXOR (1159,1946, 1186, 1962) // 3630277
    logwrite("pixels: ", $count3)
 end_sub
 
@@ -59,15 +63,31 @@ SUB(openAcc, $par1, $par2)
    wait(10)
 END_SUB
 
+SUB(reloadPage)
+   moveClick(-139, 830)
+   waitms(100)
+   moveClick(-414, 769)
+   waitms(100)
+   moveClick(-577, 597)
+   waitms(100)
+   moveClick(-513, 624)
+   waitms(100)
+END_SUB
+
+
+
 SUB(openAccs)
-   openAcc($acc4X, $acc4Y)
-   lclick(413, 44)
-   wait(12)
+   print(1000)
    openAcc($mainAccX, $mainAccY)
-   wait(2)
+   print(1001)
    openAcc($acc2X, $acc2Y)
-   wait(1)
+   print(1002)
    openAcc($acc3X, $acc3Y)
+   reloadPage()
+   wait(5)
+   reloadPage()
+   wait(5)
+   reloadPage()
 end_sub
 
 Sub(pos4, $hwid)
@@ -91,11 +111,13 @@ SUB(posAccounts)
    for($i = 0, $i < 4, 1)
       print(1)
       wndpos(hget($firstRbX, $firstRbY), 1206, 1072, 1224, 1031)
+      wait(2)
    end_cyc
    Define($countGems, 0)
    Define($countWithGems, 0)
    for($j = 0, $j < 1, 1)
       print(2)
+      wait(1)
       getscreen
       //WNDSTATE(hget(4, 4), 1)
       wait(1)
@@ -103,10 +125,9 @@ SUB(posAccounts)
       
       
       
-      pos3(hget(1910, 1962))
       pos2(hget(1910, 1962))
       pos1(hget(1910, 1962))
-      pos4(hget(1910, 1962))
+      pos3(hget(1910, 1962))
       
       
       print(PXL(1909, 1962))
@@ -169,15 +190,21 @@ SUB(closeRb, $crossX, $crossY)
    waitms(100)
    Lclick($crossX - 3, $crossY - 3)
    waitms(100)
+   LCLICK($crossExceptionX, $crossExceptionY)
+   waitms(100)
 END_SUB
 
 SUB(closeRbxs)
    closeRb($crossAcc1X, $crossAcc1Y)
+   
    wait(1)
    closeRb($crossAcc2X, $crossAcc2Y)
    closeRb($crossAcc3X, $crossAcc3Y)
-   closeRb($crossAcc4X, $crossAcc4Y)
-   closeRb(1691, 1053)
+   //   closeRb($crossAcc4X, $crossAcc4Y)
+   closeRb($crossAcc3X, $crossAcc3Y)
+   closeRb($crossAcc1X, $crossAcc1Y)
+   closeRb($crossAcc2X, $crossAcc2Y)
+     EXECUTE("taskkill", "/f /im RobloxPlayerBeta.exe")
 END_SUB
 
 SUB(paste)
@@ -196,16 +223,25 @@ Sub(tradePrepare, $userX, $userY)
    LCLICK($userX - 100, $userY)
    moveClick($userX, $userY)
    paste()
-   moveClick($userX - 188, $userY + 350)
+   moveClick($userX - 160, $userY + 340)
    TOCLIP(24000000)
    paste()
-   moveClick($userX + 69, $userY + 303)
+   moveClick($userX + 100, $userY + 300)
    
 END_SUB
 
 SUB(tradesPrepare)
    tradePrepare(1236, 462)
    tradePrepare(1212, 1443)
+END_SUB
+
+SUB(sentToAccs)
+   tradePrepare(1212, 1443)
+   wait(1)
+   moveclick(1073, 1647)
+   wait(7)
+   getPackage(1263, 1307)
+   wait(7)
 END_SUB
 
 SUB(denyGems)
@@ -222,49 +258,59 @@ SUB(denyGems)
 END_SUB
 
 SUB(executeButton)
-   moveClick(2743, 1563)
+moveClick(-962, 435)
+wait(1)
+moveClick(-962, 435)
+wait(2)
+   moveClick(-1016, 487)
    waitms(1100)
    waitms(100)
-   TOCLIP($executeCode2)
-   print($executeCode2)
+   TOCLIP($executeCode)
+   print($executeCode)
    wait(1)
    keypress(#DELETE)
    wait(1)
-   LCLICK(2400, 1468)
-   wait(1)
+   LCLICK(-1016, 487)
+   waitms(100)
+   LCLICK(-1016, 487)
+   waitms(100)
+   LCLICK(-1016, 487)
+   waitms(100)
+   LCLICK(-1016, 487)
+   waitms(100)
    
 END_SUB
 
 SUB(confTrades)
    moveClick(1084, 671)
-   moveClick(1084, 671)
-   move(157, 259)
-   LCLICK(157, 259)
-   waitms(100)
+   moveClick(1087, 671)
+   moveClick(1087, 671)
    moveClick(1061, 1657)
-   moveClick(1061, 1657)
-END_SUB
-
-SUB(shutdown)
-   EXECUTE("taskkill", "/f /im RobloxPlayerBeta.exe")
-  // EXECUTE("taskkill", "/f /im MultipleRobloxInstances.exe")
-   //wait(3)
-   //lclick(657, 2140)
-
+   moveClick(1064, 1657)
+   moveClick(1064, 1657)
 END_SUB
 
 SUB(leaveAccs)
-   waitms(1150)
-   moveClick(2093, 502)
-   moveClick(2093, 502)
+   move(-1244, 131)
+   waitms(100)
+   LCLICK(-1248, 125)
+   waitms(800)
+   moveClick(-2067, 456)
+   moveClick(-2067, 456)
+   
    
 END_SUB
 
 SUB(dupe)
    executeButton()
-   wait(10)
+   wait(6)
    confTrades()
-   leaveAccs() 
+   leaveAccs()
+END_SUB
+
+SUB(shutdown)
+   EXECUTE("taskkill", "/f /im RobloxPlayerBeta.exe")
+   
 END_SUB
 
 Sub(main)
@@ -273,7 +319,7 @@ Sub(main)
    wait(20)
    print(pos)
    posAccounts()
-   wait(1)
+   wait(3)
    sumFullHelper()
    moveToPostOffice()
    denyGems()
@@ -282,18 +328,67 @@ Sub(main)
    tradesPrepare()
    
    dupe()
-   wait(130)
-   shutdown()
-   wait(19)
+   wait(30)
+   
+   wait(1)
+   LCLICK(-1016, 487)
+   wait(1)
+   LCLICK(-1016, 487)
+   wait(1)
+   wait(30)
+   LCLICK(-1016, 487)
+   wait(70)
+   closeRbxs()
+   wait(20)
 end_sub
 
+SUB(coins)
+   moveClick(1413, 602)
+   waitms(300)
+   moveClick(1413, 602)
+   waitms(300)
+   moveClick(1055, 707)
+   waitms(300)
+   moveClick(1144, 711)
+   waitms(300)
+   
+   moveClick(1378, 1592)
+   waitms(300)
+   moveClick(1373, 1592)
+   waitms(300)
+   moveClick(1055, 1695)
+   waitms(300)
+   moveClick(1144, 1686)
+   waitms(300)
+END_SUB
 
+SUB(openUnits)
+   moveClick(619, 455)
+   waitms(300)
+   moveClick(619, 452)
+   waitms(300)
+   moveClick(938, 471)
+   waitms(300)
+   moveClick(1337, 732)
+   waitms(300)
+   
+   moveClick(592, 1423)
+   waitms(300)
+   moveClick(592, 1423)
+   waitms(300)
+   moveClick(903, 1445)
+   waitms(300)
+   moveClick(1287, 1686)
+   waitms(300)
+   
+end_sub
 
 
 for($findTime = 5010, $findTime < 7000, 10)
    print("Time ", $findTime)
    main()
 end_CYC
+
 
 
 print(end)
